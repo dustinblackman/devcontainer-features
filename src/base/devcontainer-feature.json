@@ -1,0 +1,7 @@
+{
+    "name": "base",
+    "id": "base",
+    "version": "0.0.1",
+    "description": "A set of base line debian dependencies and configurations for my devcontainers.",
+    "options": {}
+}
