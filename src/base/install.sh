@@ -1,4 +1,4 @@
-#!/bin/sh
+#!/usr/bin/env bash
 
 set -e
 
@@ -23,4 +23,4 @@ rm -f "$_REMOTE_USER_HOME"/.zlogout "$_REMOTE_USER_HOME"/.zshrc
 sudo chsh -s /usr/bin/zsh "$_REMOTE_USER"
 echo "cd /workspace" >>"$_REMOTE_USER_HOME"/.zlogin
 
-cp "$(dirname "$0")/zshrc"  "$_REMOTE_USER_HOME"/.zshrc
+cp "$(dirname "$0")/zshrc" "$_REMOTE_USER_HOME"/.zshrc
