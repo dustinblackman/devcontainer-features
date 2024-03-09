@@ -1,0 +1,9 @@
+if [[ -s "${ZDOTDIR:-$HOME}/.zprezto/init.zsh" ]]; then
+  source "${ZDOTDIR:-$HOME}/.zprezto/init.zsh"
+fi
+
+if [[ -f /var/run/devpod/result.json ]]; then
+  export DEVPOD_WORKSPACE_NAME=$(cat /var/run/devpod/result.json | jq -rc '.ContainerDetails.Config.Labels["com.docker.compose.service"]')
+  export PROMPT="%F{green}(${DEVPOD_WORKSPACE_NAME})%f $PROMPT"
+  export RPROMPT=""
+fi
