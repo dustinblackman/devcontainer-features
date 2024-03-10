@@ -14,8 +14,8 @@ git clone --recursive https://github.com/sorin-ionescu/prezto.git "$_REMOTE_USER
 rm -rf "$_REMOTE_USER_HOME"/.zprezto/**/.git "$_REMOTE_USER_HOME"/.zprezto/.git
 
 ls "$_REMOTE_USER_HOME"/.zprezto/runcoms | grep -v README | while read rcfile; do
-	if [[ ! -f "$_REMOTE_USER_HOME/.${rcfile}" ]]; then
-		ln -s "$_REMOTE_USER_HOME"/.zprezto/runcoms/"$rcfile" "$_REMOTE_USER_HOME/.${rcfile:t}"
+	if ! (ls "$_REMOTE_USER_HOME/.${rcfile}" >>/dev/null 2>&1); then
+		ln -s "$_REMOTE_USER_HOME"/.zprezto/runcoms/"$rcfile" "$_REMOTE_USER_HOME/.${rcfile}"
 	fi
 done
 rm -f "$_REMOTE_USER_HOME"/.zlogout "$_REMOTE_USER_HOME"/.zshrc
@@ -23,4 +23,4 @@ rm -f "$_REMOTE_USER_HOME"/.zlogout "$_REMOTE_USER_HOME"/.zshrc
 sudo chsh -s /usr/bin/zsh "$_REMOTE_USER"
 echo "cd /workspace" >>"$_REMOTE_USER_HOME"/.zlogin
 
-cp "$(dirname "$0")/zshrc"  "$_REMOTE_USER_HOME"/.zshrc
+cp "$(dirname "$0")/zshrc" "$_REMOTE_USER_HOME"/.zshrc
